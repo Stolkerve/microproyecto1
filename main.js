@@ -152,7 +152,19 @@ function endGame() {
   showTable()
 }
 
+let first = false
 function showTable() {
+  if (!first) {
+    const body = document.querySelector("body")
+    imgs.forEach((i) => {
+      const img = document.createElement("img")
+      img.src = i
+      img.style.display = 'none'
+      body.appendChild(img)
+    })
+    first = true
+  }
+
   const table = document.getElementById("table-row")
   while (table.firstChild) {
     table.removeChild(table.firstChild)
