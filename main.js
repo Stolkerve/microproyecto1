@@ -88,7 +88,6 @@ function createCards() {
     card.id = `${i}`
     card.src = imgs[c.pair]
     card.addEventListener("click", onCardClick)
-    await waitForImage(card)
     tableElement.appendChild(card)
   })
 
