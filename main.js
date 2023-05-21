@@ -12,7 +12,17 @@ let interval = null
 let founds = 0;
 let player = ""
 
-function initImgs() {
+function waitForImage(imgElem) {
+  return new Promise(res => {
+      if (imgElem.complete) {
+          return res();
+      }
+      imgElem.onload = () => res();
+      imgElem.onerror = () => res();
+  });
+}
+
+async function initImgs() {
   for (let i = 0; i < MAX_CARDS / 2; i++) {
     imgs.push(`assets/${i}.jpg`);
   }
@@ -72,12 +82,13 @@ function createCards() {
     cards = cards.sort(() => 0.5 - Math.random());
   }
 
-  cards.forEach((c, i) => {
+  cards.forEach(async (c, i) => {
     let card = document.createElement("img")
     card.className = "card"
     card.id = `${i}`
     card.src = imgs[c.pair]
     card.addEventListener("click", onCardClick)
+    await waitForImage(card)
     tableElement.appendChild(card)
   })
 }
@@ -152,19 +163,7 @@ function endGame() {
   showTable()
 }
 
-let first = false
 function showTable() {
-  if (!first) {
-    const body = document.querySelector("body")
-    imgs.forEach((i) => {
-      const img = document.createElement("img")
-      img.src = i
-      img.style.display = 'none'
-      body.appendChild(img)
-    })
-    first = true
-  }
-
   const table = document.getElementById("table-row")
   while (table.firstChild) {
     table.removeChild(table.firstChild)
