@@ -77,6 +77,11 @@ function createCards() {
     tableElement.removeChild(tableElement.firstChild)
   }
 
+  // Elementos de cartas
+  for (let i = 0; i < 3; i++) {
+    cards = cards.sort(() => 0.5 - Math.random());
+  }
+
   cards.forEach(async (c, i) => {
     let card = document.createElement("img")
     card.className = "card"
@@ -87,10 +92,7 @@ function createCards() {
     tableElement.appendChild(card)
   })
 
-  // Elementos de cartas
-  for (let i = 0; i < 3; i++) {
-    cards = cards.sort(() => 0.5 - Math.random());
-  }
+
 }
 
 function onCardClick(e) {
@@ -163,7 +165,21 @@ function endGame() {
   showTable()
 }
 
+
+// Cache
+let first = false
 function showTable() {
+  if (!first) {
+    const body = document.querySelector("body")
+    imgs.forEach((i) => {
+      const img = document.createElement("img")
+      img.src = i
+      img.style.display = 'none'
+      body.appendChild(img)
+    })
+    first = true
+  }
+
   const table = document.getElementById("table-row")
   while (table.firstChild) {
     table.removeChild(table.firstChild)
