@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Memoria</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='main.js'></script>
+</head>
+<style>
+  body {
+    margin: 0px;  
+    background: #202020;
+    color: white;
+  }
+
+  p {
+    margin: 0px;
+  }
+
+  table, td, th {
+    border: 1px solid;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  button {
+    padding: 8px;
+    background-color: darkblue;
+    border: 0px;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .table-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table {
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3rem;
+    gap: 2.7rem;
+  }
+
+  .card {
+    width: 10.5rem;
+    height: 14rem;
+    background-color: aqua;
+    border-radius: 15px;
+    filter: drop-shadow(5px 5px 2px rgba(255, 255, 255, 0.33));
+    scale: 100%;
+    transition: 0.1s ease;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    scale: 105%;
+  }
+
+  .card:active {
+    scale: 98%;
+  }
+
+  @media only screen and (max-width: 375px) {
+    .table {
+      margin-top: auto;
+      margin-bottom: auto;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+
+    .card {
+      width: 6.5rem;
+      height: 9rem;
+      background-color: aqua;
+      border-radius: 15px;
+      filter: drop-shadow(5px 5px 2px rgba(255, 255, 255, 0.33));
+      scale: 100%;
+      transition: 0.1s ease;
+      cursor: pointer;
+    }
+
+    .row {
+      text-overflow: ellipsis; max-width: 10rem; overflow: hidden;
+    }
+  }
+</style>
+<body>
+  <div id="main-page" class="table-container">
+    <div style="padding: 12px;">
+      <input id="name-input" style="border-radius: 15px; border: 0px; padding: 6px;"/>
+      <button onclick="checkName()">Jugar!</button>
+    </div>
+    <div style="display: flex; justify-content: center; background: gray; width: 20rem; overflow: scroll;">
+      <table id="players-tables" style="border-radius: 5px; width: 20rem; overflow: scroll;">
+        <thead style="width: 100%;">
+          <tr>
+            <th style="padding: 6px;">Jugador</th>
+            <th style="padding: 6px; width:100%;">Puntaje</th>
+          </tr>
+        </thead>
+        <tbody id="table-row">
+          <tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
