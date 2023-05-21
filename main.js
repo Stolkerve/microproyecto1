@@ -77,11 +77,6 @@ function createCards() {
     tableElement.removeChild(tableElement.firstChild)
   }
 
-  // Elementos de cartas
-  for (let i = 0; i < 3; i++) {
-    cards = cards.sort(() => 0.5 - Math.random());
-  }
-
   cards.forEach(async (c, i) => {
     let card = document.createElement("img")
     card.className = "card"
@@ -91,6 +86,11 @@ function createCards() {
     await waitForImage(card)
     tableElement.appendChild(card)
   })
+
+  // Elementos de cartas
+  for (let i = 0; i < 3; i++) {
+    cards = cards.sort(() => 0.5 - Math.random());
+  }
 }
 
 function onCardClick(e) {
@@ -225,7 +225,7 @@ function initGame() {
       document.getElementById(i).src = PATRON
     })
     block = false
-  }, 1500)
+  }, 2500)
 }
 
 window.onload = showTable;
